@@ -20,8 +20,10 @@ public class CreateCustomer {
 	}
 	
 	@Given("^I open the Chrome application$")
-	public void I_open_the_Chrome_application() {
+	public void I_open_the_Chrome_application() throws Exception{
 		System.out.println("--------------------START-----------------------");
+		Settings.setUpAppium();
+		this.driver = Settings.driver;
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		driver.get("http://demo.guru99.com/v4/");
 	}
