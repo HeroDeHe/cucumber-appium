@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import pom.HomePage;
 import utils.Settings;
 
 public class CreateCustomer {
@@ -26,6 +27,12 @@ public class CreateCustomer {
 		this.driver = Settings.driver;
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		driver.get("http://demo.guru99.com/v4/");
+	}
+	
+	@And("^user enters Username as \".*\" and Password as \".*\"$")
+	public void user_enters_Username_as_and_Password_as(String username, String password) {
+		HomePage homePage = new HomePage(driver);
+		homePage.Login(username, password);
 	}
 	
 	@And("^I input username$")
